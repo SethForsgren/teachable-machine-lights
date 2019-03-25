@@ -72,25 +72,23 @@ class Main {
     }
 
     //
-    // Create run button
+    // Create space for run button
     const div = document.createElement('div');
     document.body.appendChild(div);
     div.style.marginBottom = '10px';
 
-    // Create button
+    // Create run button
     const button = document.createElement('button')
     button.innerText = "Run";
     div.appendChild(button);
 
     // Listen for mouse events when clicking the button
-    // button.addEventListener('mousedown', () => this.training = i);
-    // button.onclick(() => window.open("https://maker.ifttt.com/trigger/wake/with/key/gcCwXtuJtRSBKdA8vmb-q1npkiZTye7rs3R1OS6TEKZ"));
-    // function callback(){
-    //  window.open("https://maker.ifttt.com/trigger/wake/with/key/gcCwXtuJtRSBKdA8vmb-q1npkiZTye7rs3R1OS6TEKZ"
-    // };
+    button.addEventListener('click', function(e) {
+      console.log('button was clicked');
 
-    // button.addEventListener('click', callback);
-    //
+
+      window.open("https://maker.ifttt.com/trigger/wake/with/key/gcCwXtuJtRSBKdA8vmb-q1npkiZTye7rs3R1OS6TEKZ");
+    });
 
 
 
@@ -186,6 +184,7 @@ class Main {
           }
           //}
           */
+          
 
           // Update info text
           if (exampleCount[i] > 0) {

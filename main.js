@@ -18,12 +18,18 @@ import * as tf from '@tensorflow/tfjs';
 import * as knnClassifier from '@tensorflow-models/knn-classifier';
 
 // Number of classes to classify
-const NUM_CLASSES = 3;
-// Webcam Image size. Must be 227. 
+const NUM_CLASSES = 2;
+// Webcam Image size Must be 227. 
 const IMAGE_SIZE = 227;
 // K value for KNN
 const TOPK = 10;
 
+//
+// Lights on constants
+const BULB = 2;
+let triggered = 0;
+// let timeout = 0;
+//
 
 class Main {
   constructor() {
@@ -64,6 +70,28 @@ class Main {
       div.appendChild(infoText);
       this.infoTexts.push(infoText);
     }
+
+    //
+    // Create run button
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+    div.style.marginBottom = '10px';
+
+    // Create button
+    const button = document.createElement('button')
+    button.innerText = "Run";
+    div.appendChild(button);
+
+    // Listen for mouse events when clicking the button
+    // button.addEventListener('mousedown', () => this.training = i);
+    // button.onclick(() => window.open("https://maker.ifttt.com/trigger/wake/with/key/gcCwXtuJtRSBKdA8vmb-q1npkiZTye7rs3R1OS6TEKZ"));
+    // function callback(){
+    //  window.open("https://maker.ifttt.com/trigger/wake/with/key/gcCwXtuJtRSBKdA8vmb-q1npkiZTye7rs3R1OS6TEKZ"
+    // };
+
+    // button.addEventListener('click', callback);
+    //
+
 
 
     // Setup webcam
@@ -130,9 +158,34 @@ class Main {
           // Make the predicted class bold
           if (res.classIndex == i) {
             this.infoTexts[i].style.fontWeight = 'bold';
+            // this.infoTexts[i].style.fontSize = "20px";
           } else {
             this.infoTexts[i].style.fontWeight = 'normal';
+            // this.infoTexts[i].style.fontSize = "40px";
           }
+
+          // const BULB = 2;
+          // let triggered = 0;
+          // HIT THE LIGHTS;
+          // let timeout = 0;
+          // setTimeout(timeout = 1, 20000);
+
+          //if (timeout = 1) {
+          /*
+          if (triggered == 0) {
+            if (res.classIndex == 1) {
+                this.infoTexts[1].style.fontSize = "40px";
+
+                window.open("https://maker.ifttt.com/trigger/wake/with/key/gcCwXtuJtRSBKdA8vmb-q1npkiZTye7rs3R1OS6TEKZ");
+
+                triggered = 1;
+              }
+                else {
+                this.infoTexts[1].style.fontSize = "20px";
+            }
+          }
+          //}
+          */
 
           // Update info text
           if (exampleCount[i] > 0) {

@@ -44,7 +44,7 @@ var TOPK = 10;
 // Lights on constants
 var BULB = 2;
 var triggered = 0;
-// let timeout = 0;
+var match = 0;
 //
 
 var Main = function () {
@@ -115,7 +115,32 @@ var Main = function () {
     button.addEventListener('click', function (e) {
       console.log('button was clicked');
 
-      window.open("https://maker.ifttt.com/trigger/wake/with/key/gcCwXtuJtRSBKdA8vmb-q1npkiZTye7rs3R1OS6TEKZ");
+      if (triggered == 0) {
+        if (match == 1) {
+          window.open("https://maker.ifttt.com/trigger/wake/with/key/gcCwXtuJtRSBKdA8vmb-q1npkiZTye7rs3R1OS6TEKZ");
+          triggered = 1;
+        } else if (match == 0) {
+          console.log('match equals 0');
+        }
+      } else {
+        console.log('triggered not equal to 0');
+      }
+    });
+
+    // Create space for reset button
+    var divR = document.createElement('div');
+    document.body.appendChild(divR);
+    divR.style.marginBottom = '10px';
+
+    // Create run button
+    var buttonR = document.createElement('button');
+    buttonR.innerText = "Reset trigger";
+    div.appendChild(buttonR);
+
+    // Listen for mouse events when clicking the button
+    buttonR.addEventListener('click', function (e) {
+      console.log('reset button was clicked');
+      triggered = 0;
     });
 
     // Setup webcam
@@ -235,6 +260,13 @@ var Main = function () {
                 } else {
                   this.infoTexts[i].style.fontWeight = 'normal';
                   // this.infoTexts[i].style.fontSize = "40px";
+                }
+
+                // make res.class change match status
+                if (res.classIndex == 1) {
+                  match = 1;
+                } else {
+                  match = 0;
                 }
 
                 // const BULB = 2;

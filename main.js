@@ -28,7 +28,7 @@ const TOPK = 10;
 // Lights on constants
 const BULB = 2;
 let triggered = 0;
-// let timeout = 0;
+let match = 0;
 //
 
 class Main {
@@ -86,8 +86,32 @@ class Main {
     button.addEventListener('click', function(e) {
       console.log('button was clicked');
 
+      if (triggered == 0) {
+        if (match == 1) {
+          window.open("https://maker.ifttt.com/trigger/wake/with/key/gcCwXtuJtRSBKdA8vmb-q1npkiZTye7rs3R1OS6TEKZ");
+          triggered = 1;
+        } else if (match == 0) {
+          console.log('match equals 0')
+        }
+      } else {
+        console.log('triggered not equal to 0');
+      }
+    });
 
-      window.open("https://maker.ifttt.com/trigger/wake/with/key/gcCwXtuJtRSBKdA8vmb-q1npkiZTye7rs3R1OS6TEKZ");
+    // Create space for reset button
+    const divR = document.createElement('div');
+    document.body.appendChild(divR);
+    divR.style.marginBottom = '10px';
+
+    // Create run button
+    const buttonR = document.createElement('button')
+    buttonR.innerText = "Reset trigger";
+    div.appendChild(buttonR);
+
+    // Listen for mouse events when clicking the button
+    buttonR.addEventListener('click', function(e) {
+      console.log('reset button was clicked');
+      triggered = 0;
     });
 
 
@@ -160,6 +184,13 @@ class Main {
           } else {
             this.infoTexts[i].style.fontWeight = 'normal';
             // this.infoTexts[i].style.fontSize = "40px";
+          }
+
+          // make res.class change match status
+          if (res.classIndex == 1) {
+            match = 1;
+          } else {
+            match = 0;
           }
 
           // const BULB = 2;

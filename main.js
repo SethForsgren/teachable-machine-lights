@@ -32,18 +32,25 @@ let match = 0;
 let jog = 0;
 //
 
-//look for the sign
-function look() {
-  console.log('im looking!');
-  while (jog = 1) {
+// look for the sign if jog is 1
+setInterval(function() {
+  if (jog == 1) {
+    console.log('we jogging');
     if (triggered == 0) {
       if (match == 1) {
         window.open("https://maker.ifttt.com/trigger/wake/with/key/gcCwXtuJtRSBKdA8vmb-q1npkiZTye7rs3R1OS6TEKZ");
+        console.log('triggered')
         triggered = 1;
+        setTimeout(function() {
+          console.log('reset trigger');
+          triggered = 0;
+        }, 10000);
       } 
     }
+  } else {
+    console.log('chill')
   }
-}
+}, 3000);
 
 class Main {
   constructor() {
@@ -141,7 +148,6 @@ class Main {
     buttonS.addEventListener('click', function(e) {
       console.log('start button was clicked');
       jog = 1;
-      look();
     });
 
     // Setup webcam

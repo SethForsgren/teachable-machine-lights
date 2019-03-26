@@ -45,7 +45,21 @@ var TOPK = 10;
 var BULB = 2;
 var triggered = 0;
 var match = 0;
+var jog = 0;
 //
+
+//look for the sign
+function look() {
+  console.log('im looking!');
+  while (jog = 1) {
+    if (triggered == 0) {
+      if (match == 1) {
+        window.open("https://maker.ifttt.com/trigger/wake/with/key/gcCwXtuJtRSBKdA8vmb-q1npkiZTye7rs3R1OS6TEKZ");
+        triggered = 1;
+      }
+    }
+  }
+}
 
 var Main = function () {
   function Main() {
@@ -100,7 +114,6 @@ var Main = function () {
       _loop(i);
     }
 
-    //
     // Create space for run button
     var div = document.createElement('div');
     document.body.appendChild(div);
@@ -132,15 +145,32 @@ var Main = function () {
     document.body.appendChild(divR);
     divR.style.marginBottom = '10px';
 
-    // Create run button
+    // Create reset button
     var buttonR = document.createElement('button');
     buttonR.innerText = "Reset trigger";
-    div.appendChild(buttonR);
+    divR.appendChild(buttonR);
 
     // Listen for mouse events when clicking the button
     buttonR.addEventListener('click', function (e) {
       console.log('reset button was clicked');
       triggered = 0;
+    });
+
+    // Create space for start button
+    var divS = document.createElement('div');
+    document.body.appendChild(divS);
+    divS.style.marginBottom = '10px';
+
+    // Create start button
+    var buttonS = document.createElement('button');
+    buttonS.innerText = "Start";
+    divS.appendChild(buttonS);
+
+    // Listen for mouse events when clicking the start button
+    buttonS.addEventListener('click', function (e) {
+      console.log('start button was clicked');
+      jog = 1;
+      look();
     });
 
     // Setup webcam
@@ -268,27 +298,6 @@ var Main = function () {
                 } else {
                   match = 0;
                 }
-
-                // const BULB = 2;
-                // let triggered = 0;
-                // HIT THE LIGHTS;
-                // let timeout = 0;
-                // setTimeout(timeout = 1, 20000);
-
-                //if (timeout = 1) {
-                /*
-                if (triggered == 0) {
-                  if (res.classIndex == 1) {
-                      this.infoTexts[1].style.fontSize = "40px";
-                       window.open("https://maker.ifttt.com/trigger/wake/with/key/gcCwXtuJtRSBKdA8vmb-q1npkiZTye7rs3R1OS6TEKZ");
-                       triggered = 1;
-                    }
-                      else {
-                      this.infoTexts[1].style.fontSize = "20px";
-                  }
-                }
-                //}
-                */
 
                 // Update info text
                 if (exampleCount[i] > 0) {
